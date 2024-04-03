@@ -1,9 +1,11 @@
 import React from 'react';
 
-const LocationTile = () => {
+const LocationTile = ({location}) => {
   return (
-    <div>
-      {/* Your component content goes here */}
+    <div className="location-tile">
+      {location.name}
+      <br/>
+      {location.address}
     </div>
   );
 };

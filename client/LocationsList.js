@@ -1,10 +1,16 @@
 import React from 'react';
+import LocationTile from './LocationTile.js';
 
-const LocationsList = () => {
+const LocationsList = ( {locations}) => {
+  console.log(locations);
+
+
   return (
     <div>
-      {/* Your component content goes here */}
       LocationsList
+      {locations.map(location => (
+        <LocationTile key={location.location_id} location={location} />))}
+
     </div>
   );
 };

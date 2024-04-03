@@ -2,8 +2,12 @@ import React from 'react';
 
 const LocationModal = () => {
   return (
-    <div>
-      {/* Your component content goes here */}
+    <div className="modal-overlay">
+
+    <div className="location-modal">
+      LOCATION MODAL!!!!!!!!!!!!!!!
+    </div>
+
     </div>
   );
 };
