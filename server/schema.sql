@@ -9,7 +9,9 @@ CREATE DATABASE Bark;
 CREATE TABLE locations (
   location_id SERIAL PRIMARY KEY,
   name TEXT,
-  address TEXT
+  address TEXT,
+  lat FLOAT,
+  lng FLOAT
 );
 
 -- Create the reviews table

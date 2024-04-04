@@ -24,7 +24,7 @@ function insertLocations() {
         return;
       }
       data.locations.forEach((location) => {
-        pool.query('INSERT INTO locations (name, address) VALUES ($1, $2)', [location.name, location.address], (err) => {
+        pool.query('INSERT INTO locations (name, address, lat, lng) VALUES ($1, $2, $3, $4)', [location.name, location.address, location.lat, location.lng], (err) => {
           if (err) {
             console.error('Error inserting location', err.stack);
             pool.query('ROLLBACK', (err) => {
@@ -88,8 +88,8 @@ function insertReviews() {
 
 // Run the functions to insert data
 function main() {
-  // insertLocations();
-  insertReviews();
+  insertLocations();
+  // insertReviews();
 }
 
 main();

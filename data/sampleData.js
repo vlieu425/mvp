@@ -2,42 +2,62 @@ const locations = [
   {
     name: 'Golden Gate Park',
     address: '501 Stanyan St, San Francisco, CA 94117',
+    lat: 37.7694,
+    lng: -122.4862,
   },
   {
     name: 'Dolores Park',
     address: '19th St & Dolores St, San Francisco, CA 94114',
+    lat: 37.7596,
+    lng: -122.4269,
   },
   {
     name: 'Crissy Field',
     address: '1199 E Beach, San Francisco, CA 94129',
+    lat: 37.8060,
+    lng: -122.4545,
   },
   {
     name: 'Presidio Park',
     address: '103 Montgomery St, San Francisco, CA 94129',
+    lat: 37.7986,
+    lng: -122.4666,
   },
   {
     name: 'Alamo Square Park',
     address: 'Steiner St & Hayes St, San Francisco, CA 94117',
+    lat: 37.7764,
+    lng: -122.4346,
   },
   {
     name: 'Mission Dolores Park',
     address: 'Dolores St & 18th St, San Francisco, CA 94114',
+    lat: 37.7596,
+    lng: -122.4269,
   },
   {
     name: 'Yerba Buena Gardens',
     address: '750 Howard St, San Francisco, CA 94103',
+    lat: 37.7849,
+    lng: -122.4023,
   },
   {
     name: 'Washington Square Park',
     address: 'Filbert St & Stockton St, San Francisco, CA 94133',
+    lat: 37.8003,
+    lng: -122.4090,
   },
   {
     name: 'Glen Canyon Park',
     address: 'Elk St & Chenery St, San Francisco, CA 94127',
+    lat: 37.7369,
+    lng: -122.4407,
   },
   {
     name: 'Buena Vista Park',
     address: 'Buena Vista Ave W & Haight St, San Francisco, CA 94117',
+    lat: 37.7679,
+    lng: -122.4395,
   }
 ];
 

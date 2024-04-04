@@ -1,27 +1,82 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
 
+body {
+  background-color: #faf8f8;
+  margin: 0;
+}
+
+
+
+
+.first-color {
+	background: #faf8f8;
+}
+.second-color {
+	background: #17ead9;
+}
+.third-color {
+	background: #6078ea;
+}
+.fourth-color {
+	background: #4b4848;
+}
+
+
+/* HEADER */
 
 .header-content {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #6078ea;
+  /* border-radius: 5px; */
+  padding: 10px;
 }
 
 .app-name {
   font-size: 24px;
   font-weight: bold;
-  color: #ff0000; /* Replace with your desired color */
+  color: #faf8f8;
 }
 
-.buttons {
+
+.main {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
 }
 
 
 
+
+/* LOCATION TILES STYLES */
 .location-tile {
   border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.location-tile:hover {
+  background-color: lightgray;
+}
+
+button {
+  padding-right: 10px;
+  margin: 10px 5px 10px 5px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: white;
+  border: 0.1px solid;
+  border-color: black;
+}
+
+button:hover {
+  background-color: lightgray;
 }
 
 
