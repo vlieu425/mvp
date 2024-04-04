@@ -88,8 +88,8 @@ function insertReviews() {
 
 // Run the functions to insert data
 function main() {
-  insertLocations();
-  // insertReviews();
+  // insertLocations();
+  insertReviews();
 }
 
 main();

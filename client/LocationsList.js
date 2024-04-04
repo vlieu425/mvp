@@ -7,7 +7,6 @@ const LocationsList = ( {locations, openModal} ) => {
 
   return (
     <div>
-      LocationsList
       {locations.map(location => (
         <LocationTile key={location.location_id} location={location} openModal={openModal} />))}
 

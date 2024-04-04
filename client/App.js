@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import Home from "./Home.js";
-import Login from "./Login.js";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Home.js';
+import Login from './Login.js';
+import Header from './Header.js';
 import './styles.css';
 
 
@@ -11,17 +12,18 @@ const App = () => {
 
   return (
     <div>
+     {/* <Home/>
+     <Login/> */}
+
     <Router>
-      <div>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </Router>
-    </div>
 
-
+</div>
 
   )
 }

@@ -21,3 +21,17 @@ app.get('/api/locations', (req, res) => {
     }
   });
 })
+
+
+app.get('/api/reviews/:locationId', (req, res) => {
+  const locationId = req.params.locationId;
+  console.log('locationId', locationId);
+  db.query('SELECT * FROM reviews WHERE location_id = $1', [locationId], (err, result) => {
+    if (err) {
+      console.error('Error fetching reviews: ', err);
+      res.status(500).send('Error fetching reviews');
+    } else {
+      res.send(result.rows);
+    }
+  });
+})

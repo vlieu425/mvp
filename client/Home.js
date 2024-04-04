@@ -8,12 +8,16 @@ import MapContainer from "./MapContainer.js";
 import axios from "axios";
 
 const Home = () => {
+  const [reviews, setReviews] = useState([]);
+
   const [locations, setLocations] = useState([]);
-  console.log(locations);
+  // console.log(locations);
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
   const [loading, setLoading] = useState(true);
+
   const [showModal, setShowModal] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState(null);
+
 
 
   const openModal = (location) => {
@@ -41,7 +45,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Filters />
         <div className="main">
           <LocationsList locations={locations} openModal={openModal} />

@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-console.log(process.env.POSTGRES_DB);
+// console.log(process.env.POSTGRES_DB);
 
 // Create a new pool instance with your database connection details
 const pool = new Pool({
