@@ -18,6 +18,8 @@ const Home = () => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [favoriteFilter, setFavoriteFilter] = useState(false);
+
 
 
   const openModal = (location) => {
@@ -43,13 +45,16 @@ const Home = () => {
     return <div>Loading...</div>;
   }
 
+  const filteredLocations = favoriteFilter ? locations.filter(location => location.favorite === true) : locations;
+
+
   return (
     <div>
       {/* <Header /> */}
-      <Filters />
+      <Filters setFavoriteFilter={setFavoriteFilter} />
         <div className="main">
-          <LocationsList locations={locations} openModal={openModal} />
-          <MapContainer locations={locations} onMarkerClick={openModal}/>
+          <LocationsList locations={filteredLocations} openModal={openModal} />
+          <MapContainer locations={filteredLocations} onMarkerClick={openModal}/>
         </div>
       {/* <button onClick={openModal}>Open Modal</button> */}
 

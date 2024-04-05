@@ -40,6 +40,7 @@ body {
   font-size: 24px;
   font-weight: bold;
   color: #faf8f8;
+  cursor: pointer;
 }
 
 
@@ -59,6 +60,15 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+  position: relative;
+}
+
+
+.favorite-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
 }
 
 .location-tile:hover {
@@ -99,6 +109,7 @@ button:hover {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
+  position: relative;
 }
 
 .close {
@@ -106,4 +117,34 @@ button:hover {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+
+/* REVIEW TILES STYLES */
+.reviews-tile {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+/* STAR RATING STYLES */
+.star-rating-wrapper {
+  display: flex;
+}
+
+.star {
+  margin-right: 5px; /* Adjust spacing between stars as needed */
+}
+
+.fa-paw {
+  color: #6078ea; /* Change to your desired color */
 }

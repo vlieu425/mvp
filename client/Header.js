@@ -13,6 +13,10 @@ const Header = () => {
     navigate('/');
   }
 
+  const navigateToYourReviews = () => {
+    navigate('/reviews');
+  }
+
 
   return (
 
@@ -20,7 +24,7 @@ const Header = () => {
       <span className="app-name" onClick={navigateToHome}>BARK! </span>
 
       <span>
-      <button> Favorites </button>
+      <button onClick={navigateToYourReviews}> Your Reviews </button>
       <button onClick={navigateToLogin}> Log In </button>
       </span>
     </div>

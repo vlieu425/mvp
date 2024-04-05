@@ -21,6 +21,8 @@ const LocationModal = ( {location, closeModal}) => {
       });
   }, [])
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("SUBMITTING")
@@ -29,9 +31,34 @@ const LocationModal = ( {location, closeModal}) => {
     const rating = e.target.elements.rating.value;
     const review = e.target.elements.review.value;
 
+    const data = {
+      locationID: location.location_id,
+      username: 'Vincent',
+      email: 'test@test.com',
+      reviewBody: review,
+      rating: rating,
+      // upvotes: 0,
+      // downvotes: 0,
+      // reported: false,
+    };
     // Log form data
-    console.log("Rating:", rating);
-    console.log("Review:", review);
+    // console.log("Rating:", rating);
+    // console.log("Review:", review);
+
+    axios.post('/api/reviews', data)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error('Error submitting review: ', error);
+    })
+    axios.get(`api/reviews/${location.location_id}`)
+      .then((response) => {
+        setReviews(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ', error);
+      });
 
     // Reset the form
     e.target.reset();
@@ -46,7 +73,9 @@ const LocationModal = ( {location, closeModal}) => {
   return (
     <div className="modal-overlay">
       <div className="location-modal">
+      <div className="close">
       <button onClick={closeModal} >X</button>
+      </div>
         <h2>{location.name}</h2>
         <p>{location.address}</p>
         {

@@ -62,7 +62,7 @@ function insertReviews() {
       }
       data.reviews.forEach((review) => {
         pool.query('INSERT INTO reviews (location_id, username, email, review_body, rating, upvotes, downvotes, reported) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-          [review.locationID, review.userName, review.email, review.reviewBody, review.rating, review.upvote, review.downvote, review.report], (err) => {
+          [review.locationID, review.username, review.email, review.reviewBody, review.rating, review.upvote, review.downvote, review.report], (err) => {
           if (err) {
             console.error('Error inserting review', err.stack);
             pool.query('ROLLBACK', (err) => {

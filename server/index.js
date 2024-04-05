@@ -23,15 +23,82 @@ app.get('/api/locations', (req, res) => {
 })
 
 
-app.get('/api/reviews/:locationId', (req, res) => {
+// app.get('/api/reviews/:locationId', (req, res) => {
+//   const locationId = req.params.locationId;
+//   console.log('locationId', locationId);
+//   db.query('SELECT * FROM reviews WHERE location_id = $1', [locationId], (err, result) => {
+//     if (err) {
+//       console.error('Error fetching reviews: ', err);
+//       res.status(500).send('Error fetching reviews');
+//     } else {
+//       res.send(result.rows);
+//     }
+//   });
+// })
+
+
+
+app.get('/api/reviews/:locationId?', (req, res) => {
   const locationId = req.params.locationId;
-  console.log('locationId', locationId);
-  db.query('SELECT * FROM reviews WHERE location_id = $1', [locationId], (err, result) => {
+  if (locationId) {
+    // If locationId is provided, fetch reviews for that location
+    console.log('locationId', locationId);
+    db.query('SELECT * FROM reviews WHERE location_id = $1', [locationId], (err, result) => {
+      if (err) {
+        console.error('Error fetching reviews: ', err);
+        res.status(500).send('Error fetching reviews');
+      } else {
+        res.send(result.rows);
+      }
+    });
+  } else {
+    // If no locationId is provided, fetch all reviews
+    db.query('SELECT * FROM reviews', (err, result) => {
+      if (err) {
+        console.error('Error fetching reviews: ', err);
+        res.status(500).send('Error fetching reviews');
+      } else {
+        res.send(result.rows);
+      }
+    });
+  }
+});
+
+
+app.post('/api/reviews', (req, res) => {
+  const { location_id, rating, review } = req.body;
+  db.query('INSERT INTO reviews (location_id, username, email, review_body, rating, upvotes, downvotes, reported) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [req.body.locationID, req.body.username, req.body.email, req.body.reviewBody, req.body.rating, req.body.upvote, req.body.downvote, req.body.report], (err) => {
     if (err) {
-      console.error('Error fetching reviews: ', err);
-      res.status(500).send('Error fetching reviews');
+      console.error('Error inserting review: ', err);
+      res.status(500).send('Error inserting review');
     } else {
-      res.send(result.rows);
+      res.status(201).send('Review inserted successfully');
     }
   });
+})
+
+app.delete('/api/reviews/:reviewId', (req, res) => {
+  const reviewId = req.params.reviewId;
+  db.query('DELETE FROM reviews WHERE review_id = $1', [reviewId], (err) => {
+    if (err) {
+      console.error('Error deleting review: ', err);
+      res.status(500).send('Error deleting review');
+    } else {
+      res.status(200).send('Review deleted successfully');
+    }
+  });
+})
+
+app.put('/api/favorite/:locationId', (req, res) => {
+  const locationId = req.params.locationId;
+  db.query('UPDATE locations SET favorite = NOT favorite WHERE location_id = $1', [locationId], (err) => {
+    if (err) {
+      console.error('Error updating favorite status: ', err);
+      res.status(500).send('Error updating favorite status');
+    } else {
+      res.status(200).send('Favorite status updated successfully');
+    }
+  });
+
+
 })

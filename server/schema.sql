@@ -11,7 +11,8 @@ CREATE TABLE locations (
   name TEXT,
   address TEXT,
   lat FLOAT,
-  lng FLOAT
+  lng FLOAT,
+  favorite BOOLEAN DEFAULT FALSE
 );
 
 -- Create the reviews table
