@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function DogRating({
   ratingToDisplay, interactive, onRatingChange,
