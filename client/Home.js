@@ -7,7 +7,7 @@ import LocationModal from "./LocationModal.js";
 import MapContainer from "./MapContainer.js";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({yourReviewsPage}) => {
   const [reviews, setReviews] = useState([]);
 
   const [locations, setLocations] = useState([]);
@@ -53,12 +53,12 @@ const Home = () => {
       {/* <Header /> */}
       <Filters setFavoriteFilter={setFavoriteFilter} />
         <div className="main">
-          <LocationsList locations={filteredLocations} openModal={openModal} />
+          <LocationsList locations={filteredLocations} openModal={openModal} setLocations={setLocations} yourReviewsPage={yourReviewsPage}/>
           <MapContainer locations={filteredLocations} onMarkerClick={openModal}/>
         </div>
       {/* <button onClick={openModal}>Open Modal</button> */}
 
-      {showModal && <LocationModal closeModal={closeModal} location={selectedLocation} />}
+      {showModal && <LocationModal closeModal={closeModal} location={selectedLocation} yourReviewsPage={yourReviewsPage}/>}
     </div>
   )
 }

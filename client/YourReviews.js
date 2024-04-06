@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import ReviewTile from './ReviewTile';
 
-const YourReviews = () => {
+const YourReviews = ({yourReviewsPage}) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const YourReviews = () => {
     <div>
       <h1>Your Reviews</h1>
       {filteredReviews.map((review) => (
-        <ReviewTile key={review.review_id} review={review} />
+        <ReviewTile key={review.review_id} review={review} yourReviewsPage={yourReviewsPage} setReviews={setReviews}/>
       ))}
     </div>
   );

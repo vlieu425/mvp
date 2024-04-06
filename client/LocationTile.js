@@ -1,9 +1,21 @@
 import React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const LocationTile = ({ location, openModal }) => {
+const LocationTile = ({ location, openModal, setLocations, yourReviewsPage }) => {
+
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    axios.get(`api/favorite/${location.location_id}`)
+      .then((response) => {
+        setIsFavorite(response.data[0].favorite);
+        })
+      .catch((error) => {
+        console.error('Error fetching favorite status: ', error);
+      });
+  }, [])
+
 
   const handleFavoriteClick = (e) => {
     e.stopPropagation(); //stops modal from opening
@@ -12,6 +24,10 @@ const LocationTile = ({ location, openModal }) => {
     axios.put(`/api/favorite/${location.location_id}`)
       .then((response) => {
         console.log(response.data);
+        axios.get('/api/locations')
+          .then((response) => {
+            setLocations(response.data);
+          })
       })
       .catch((error) => {
         console.error('Error updating favorite status: ', error);

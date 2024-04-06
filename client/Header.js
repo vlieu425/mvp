@@ -1,20 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({yourReviewsPage, setYourReviewsPage}) => {
   let navigate = useNavigate();
 
 
   const navigateToLogin = () => {
     navigate('/login');
+    setYourReviewsPage(false)
   };
 
   const navigateToHome = () => {
     navigate('/');
+    setYourReviewsPage(false)
   }
 
   const navigateToYourReviews = () => {
     navigate('/reviews');
+    setYourReviewsPage(true)
   }
 
 

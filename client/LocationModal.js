@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import ReviewsList from './ReviewsList';
 import axios from 'axios';
 
-const LocationModal = ( {location, closeModal}) => {
+const LocationModal = ( {location, closeModal, yourReviewsPage}) => {
   const [reviews, setReviews] = useState([]);
   const [addReviewState, setAddReviewState] = useState(false);
   console.log("addReviewState", addReviewState)
@@ -48,17 +48,18 @@ const LocationModal = ( {location, closeModal}) => {
     axios.post('/api/reviews', data)
     .then((response) => {
       console.log(response.data);
-    })
-    .catch((error) => {
-      console.error('Error submitting review: ', error);
-    })
-    axios.get(`api/reviews/${location.location_id}`)
+      axios.get(`api/reviews/${location.location_id}`)
       .then((response) => {
         setReviews(response.data);
       })
       .catch((error) => {
         console.error('Error fetching data: ', error);
       });
+    })
+    .catch((error) => {
+      console.error('Error submitting review: ', error);
+    })
+
 
     // Reset the form
     e.target.reset();
@@ -91,7 +92,7 @@ const LocationModal = ( {location, closeModal}) => {
         :
         <button onClick={()=>{setAddReviewState(true)}}>Add Review</button>
         }
-        <ReviewsList reviews={reviews}/>
+        <ReviewsList reviews={reviews} yourReviewsPage={yourReviewsPage}/>
       </div>
 
     </div>

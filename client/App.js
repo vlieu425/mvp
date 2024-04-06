@@ -10,6 +10,8 @@ import './styles.css';
 
 const App = () => {
 
+  const [yourReviewsPage, setYourReviewsPage] = useState(false);
+
 
   return (
     <div>
@@ -17,11 +19,11 @@ const App = () => {
      <Login/> */}
 
     <Router>
-      <Header />
+      <Header yourReviewsPage={yourReviewsPage} setYourReviewsPage={setYourReviewsPage}/>
       <Routes>
-        <Route path="/" element={<Home />} exact />
+        <Route path="/" element={<Home yourReviewsPage={yourReviewsPage}/>} exact />
         <Route path="/login" element={<Login />} />
-        <Route path="/reviews" element={<YourReviews />} />
+        <Route path="/reviews" element={<YourReviews yourReviewsPage={yourReviewsPage}/>} />
       </Routes>
     </Router>
 

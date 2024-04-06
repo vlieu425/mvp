@@ -22,6 +22,17 @@ app.get('/api/locations', (req, res) => {
   });
 })
 
+app.get('/api/favorite/:locationId', (req, res) => {
+  const locationId = req.params.locationId;
+  db.query('SELECT favorite FROM locations WHERE location_id = $1', [locationId], (err, result) => {
+    if (err) {
+      console.error('Error fetching favorite status: ', err);
+      res.status(500).send('Error fetching favorite status');
+    } else {
+      res.send(result.rows);
+    }
+  });
+})
 
 // app.get('/api/reviews/:locationId', (req, res) => {
 //   const locationId = req.params.locationId;
